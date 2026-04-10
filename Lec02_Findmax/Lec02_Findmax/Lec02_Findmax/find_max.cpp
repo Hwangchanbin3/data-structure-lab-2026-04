@@ -20,6 +20,4 @@ void main()
 	printf("result = %d", out);
 
 
-
-
 }

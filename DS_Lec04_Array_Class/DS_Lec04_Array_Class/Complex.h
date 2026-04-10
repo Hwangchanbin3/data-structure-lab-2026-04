@@ -1,5 +1,6 @@
 #pragma once
 #include<cstdio>
+
 class Complex
 {
 	double real;
