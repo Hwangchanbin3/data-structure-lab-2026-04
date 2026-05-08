@@ -21,12 +21,10 @@ public:
 	//Get Age
 	int getAge() {
 		return age;
-
 	 }
 	//Get Type
 	string getType() {
 		return type;
-
 	}
 
 };

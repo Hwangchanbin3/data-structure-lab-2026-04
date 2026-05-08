@@ -21,6 +21,7 @@ int find_max_score(int h, int w) {
 	tmp = image[0][0];
 
 	for (i = 0; i < h; i++) {
+
 		for (j = 0; j < w; j++) {
 			if (image[i][j] > tmp) {
 				tmp = image[i][j];
