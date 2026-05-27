@@ -1,5 +1,5 @@
 #include "AdjMatGraph.h"
-void main()
+int main()
 {
 	SrchAMGraph g;
 	
@@ -27,4 +27,11 @@ void main()
 	g.resetVisited();
 	g.DFS(0);
 	printf("\n");
+
+	Wgraph wg;
+	wg.load("../graph.txt");
+	wg.display();
+	return 0;
+
 }
+
