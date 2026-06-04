@@ -2,6 +2,8 @@
 #define MAX_VTXS 20
 #include <stdio.h>
 #define INF 9999
+#define MAX_ELEMENT 200
+
 class AdjMatGraph {
 protected:
 	int size;
@@ -15,14 +17,13 @@ public:
 	bool isEmpty() { return size == 0; }
 	bool isFull() { return size >= MAX_VTXS; }
 
-	// 그래프 초기화 ==> 공백 상태의 그래프
 	void reset() {
 		size = 0;
 		for (int i = 0; i < MAX_VTXS; i++)
 			for (int j = 0; j < MAX_VTXS; j++)
 				setEdge(i, j, 0);
 	}
-	//정점삽입
+
 	void insertVertex(char name) {
 		if (!isFull()) vertices[size++] = name;
 		else printf("Error: 그래프 정점 개수 초과\n");
@@ -34,18 +35,17 @@ public:
 	}
 
 	void display(FILE* fp = stdout) {
-	fprintf(fp, " %d\n", size);
-	for (int i = 0; i < size; i++) {
-		fprintf(fp, "%c", getVertex(i));
-		for (int j = 0 ; j < size ; j++)
-		fprintf(fp, " %d ", getEdge(i, j));
-		fprintf(fp, "\n");
+		fprintf(fp, " %d\n", size);
+		for (int i = 0; i < size; i++) {
+			fprintf(fp, "%c", getVertex(i));
+			for (int j = 0; j < size; j++)
+				fprintf(fp, " %d ", getEdge(i, j));
+			fprintf(fp, "\n");
 		}
 	}
 };
 
-class SrchAMGraph : public AdjMatGraph
-{
+class SrchAMGraph : public AdjMatGraph {
 	bool visited[MAX_VTXS];
 public:
 	void resetVisited() {
@@ -53,8 +53,7 @@ public:
 			visited[i] = false;
 	}
 	bool isLinked(int u, int v) { return getEdge(u, v) != 0; }
-	
-	//깊이 우선 탐색 함수
+
 	void DFS(int v) {
 		visited[v] = true;
 		printf("%c", getVertex(v));
@@ -62,38 +61,134 @@ public:
 		for (int w = 0; w < size; w++)
 			if (isLinked(v, w) && visited[w] == false)
 				DFS(w);
-
 	}
-
 };
 
-class Wgraph : public AdjMatGraph {
+class WGraph : public AdjMatGraph {
 public:
 	void insertEdge(int u, int v, int weight) {
 		if (weight > INF) weight = INF;
-		setEdge(u, v,weight);
+		setEdge(u, v, weight);
 	}
-	bool hasEdge(int i, int j) { return (getEdge(i, j) < INF); }
+	bool hasEdge(int i, int j) { return (getEdge(i, j) > 0 && getEdge(i, j) < INF); }
 
 	void load(const char* filename) {
 		FILE* fp;
-		fopen_s(&fp, filename,"r");
+		fopen_s(&fp, filename, "r");
 		if (fp != NULL) {
-			int n, val;
-			fscanf_s(fp,"%d", &n);
+			int n;
+			fscanf_s(fp, "%d", &n);
 			for (int i = 0; i < n; i++) {
 				char str[80];
-				int val;
-				fscanf_s(fp,"%s", str , sizeof(str));
+				fscanf_s(fp, "%s", str, (unsigned int)sizeof(str));
 				insertVertex(str[0]);
 				for (int j = 0; j < n; j++) {
+					int val;
 					fscanf_s(fp, "%d", &val);
 					insertEdge(i, j, val);
 				}
-
 			}
 			fclose(fp);
 		}
-		
 	}
-	};
+};
+
+class VertexSets {
+	int parent[MAX_VTXS];
+	int nSets;
+public:
+	VertexSets(int n) : nSets(n) {
+		for (int i = 0; i < nSets; i++)
+			parent[i] = -1;
+	}
+	bool isRoot(int i) { return parent[i] < 0; }
+	int findSet(int v) {
+		while (!isRoot(v)) v = parent[v];
+		return v;
+	}
+	void unionSets(int s1, int s2) {
+		parent[s1] = s2;
+		nSets--;
+	}
+};
+
+class HeapNode {
+	int key;
+	int v1;
+	int v2;
+public:
+	HeapNode() : key(0), v1(0), v2(0) {}
+	HeapNode(int k, int u, int v) : key(k), v1(u), v2(v) {}
+	void setKey(int k) { key = k; }
+	void setKey(int k, int u, int v) { key = k; v1 = u; v2 = v; }
+	int getKey() { return key; }
+	int getv1() { return v1; }
+	int getv2() { return v2; }
+};
+
+class MinHeap {
+	HeapNode node[MAX_ELEMENT];
+	int size;
+public:
+	MinHeap() : size(0) {}
+	bool isFull() { return size == MAX_ELEMENT - 1; }
+	bool isEmpty() { return size == 0; }
+
+	HeapNode getParent(int i) { return node[i / 2]; }
+
+	void insert(int key, int u, int v) {
+		if (isFull()) return;
+		int i = ++size;
+		while (i != 1 && key < getParent(i).getKey()) {
+			node[i] = getParent(i);
+			i /= 2;
+		}
+		node[i].setKey(key, u, v);
+	}
+
+	HeapNode remove() {
+		HeapNode item = node[1];
+		HeapNode last = node[size--];
+		int parent = 1, child = 2;
+		while (child <= size) {
+			if (child < size && node[child].getKey() > node[child + 1].getKey())
+				child++;
+			if (last.getKey() <= node[child].getKey()) break;
+			node[parent] = node[child];
+			parent = child;
+			child *= 2;
+		}
+		node[parent] = last;
+		return item;
+	}
+};
+
+class WGraphMST : public WGraph {
+public:
+	void Kruskal() {
+		MinHeap heap;
+		for (int i = 0; i < size - 1; i++) {
+			for (int j = i + 1; j < size; j++) {
+				if (hasEdge(i, j)) {
+					heap.insert(getEdge(i, j), i, j);
+				}
+			}
+		}
+
+		VertexSets set(size);
+		int edgeAccepted = 0;
+
+		while (edgeAccepted < size - 1 && !heap.isEmpty()) {
+			HeapNode e = heap.remove();
+			int uset = set.findSet(e.getv1());
+			int vset = set.findSet(e.getv2());
+
+			if (uset != vset) {
+				printf("간선 추가 : %c - %c (비용:%d)\n",
+					getVertex(e.getv1()), getVertex(e.getv2()), e.getKey());
+				set.unionSets(uset, vset);
+				edgeAccepted++;
+			}
+		}
+	}
+};

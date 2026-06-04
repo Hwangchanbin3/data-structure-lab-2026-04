@@ -1,9 +1,10 @@
 #include "AdjMatGraph.h"
+
 int main()
 {
 	SrchAMGraph g;
-	
-	for (int i = 0; i<4; i++)
+
+	for (int i = 0; i < 4; i++)
 		g.insertVertex('A' + i);
 	g.insertEdge(0, 1);
 	g.insertEdge(0, 3);
@@ -13,25 +14,30 @@ int main()
 	printf("인접 행렬로 표현한 그래프\n");
 	g.display();
 
-	//파일출력
 	FILE* fp;
 	fopen_s(&fp, "../text_out.txt", "w");
-	g.display(fp);
-	fclose(fp);
+	if (fp != NULL) {
+		g.display(fp);
+		fclose(fp);
+	}
 
-//깊이 우선 탐색 테스트 프로그램
-	
 	printf("그래프(graph.txt)\n");
 	g.display();
 	printf("DFS ==> ");
 	g.resetVisited();
 	g.DFS(0);
+	printf("\n\n");
+
+	WGraphMST mstGraph;
+	// 현재 graph.txt 파일이 위치한 상위 폴더 경로로 정확히 지정했습니다.
+	mstGraph.load("../graph.txt");
+
+	printf("=== 가중치 그래프 정보 ===\n");
+	mstGraph.display();
 	printf("\n");
 
-	Wgraph wg;
-	wg.load("../graph.txt");
-	wg.display();
+	printf("MST BY Kruskal's Algorithm\n");
+	mstGraph.Kruskal();
+
 	return 0;
-
 }
-
