@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|solutionrelative:Lec10_Graph\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\WGraphDijkstra.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|solutionrelative:Lec10_Graph\\WGraphDijkstra.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\WGraphPrim.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|solutionrelative:Lec10_Graph\\WGraphPrim.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\AdjMatGraph.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{03362F81-37A9-4834-99D4-99F7F59E03A0}|Lec10_Graph\\Lec10_Graph.vcxproj|solutionrelative:Lec10_Graph\\AdjMatGraph.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -18,17 +26,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "WGraphDijkstra.h",
+              "DocumentMoniker": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\WGraphDijkstra.h",
+              "RelativeDocumentMoniker": "Lec10_Graph\\WGraphDijkstra.h",
+              "ToolTip": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\WGraphDijkstra.h",
+              "RelativeToolTip": "Lec10_Graph\\WGraphDijkstra.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-05T01:03:30.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WGraphPrim.h",
+              "DocumentMoniker": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\WGraphPrim.h",
+              "RelativeDocumentMoniker": "Lec10_Graph\\WGraphPrim.h",
+              "ToolTip": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\WGraphPrim.h",
+              "RelativeToolTip": "Lec10_Graph\\WGraphPrim.h",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-05T00:24:20.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AdjMatGraph.h",
               "DocumentMoniker": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\AdjMatGraph.h",
               "RelativeDocumentMoniker": "Lec10_Graph\\AdjMatGraph.h",
               "ToolTip": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\AdjMatGraph.h",
               "RelativeToolTip": "Lec10_Graph\\AdjMatGraph.h",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAIwMEAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-05-15T00:20:35.833Z",
               "EditorCaption": ""
@@ -41,7 +75,7 @@
               "RelativeDocumentMoniker": "Lec10_Graph\\main.cpp",
               "ToolTip": "C:\\Users\\\uD669\uCC2C\uBE48\\Desktop\\data-structure-lab-2026 4\\Lec10_Graph\\Lec10_Graph\\main.cpp*",
               "RelativeToolTip": "Lec10_Graph\\main.cpp*",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwCEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-15T00:18:54.625Z",
               "EditorCaption": ""
